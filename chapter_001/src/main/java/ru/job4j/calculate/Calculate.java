@@ -11,8 +11,8 @@ public class Calculate {
 	 * @param args
 	 *        The empty string array
 	 */
-	public static void main (String[] args){
-		System.out.println ("Hello world");
+	public static void main(String[] args) {
+		System.out.println("Hello world");
 	}
 	
 	/**
@@ -21,9 +21,7 @@ public class Calculate {
 	 * @return Echo plus your name
 	 */
 	 
-	public String echo (String name) {
+	public String echo(String name) {
 		return "Echo, echo, echo:" + name;
 	}
-	
 }
-

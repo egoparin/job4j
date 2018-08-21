@@ -12,18 +12,18 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 0.1
  */
-public class CalculateTest{
+public class CalculateTest {
 	/**
 	 * Test echo
 	*/
 	@Test
-	public void whenTakeNameThenTreeEchoPlusName(){
+	public void whenTakeNameThenTreeEchoPlusName() {
 		String input = "Egor Oparin";
-		String expect = "Echo, echo, echo:Egor Oparin";
+		String expect = "Echo, echo, echo :Egor Oparin";
 	
 		Calculate calc = new Calculate();
 		String result = calc.echo(input);
 	
-		assertThat(result,is(expect));
+		assertThat(result, is(expect));
 	}
 }
