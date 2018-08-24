@@ -14,12 +14,12 @@ import static org.junit.Assert.assertThat;
  */
 public class CalculateTest {
 	/**
-	 * Test echo
+	 * Test
 	*/
 	@Test
 	public void whenTakeNameThenTreeEchoPlusName() {
 		String input = "Egor Oparin";
-		String expect = "Echo, echo, echo :Egor Oparin";
+		String expect = "Echo, echo, echo:Egor Oparin";
 	
 		Calculate calc = new Calculate();
 		String result = calc.echo(input);
