@@ -18,6 +18,7 @@ public class MaxTest {
 
     /**
      * Test
+     *
      */
     @Test
     public void when1and2Then2() {

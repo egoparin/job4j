@@ -11,7 +11,6 @@ package ru.job4j.max;
 public class Max {
     /**
      * Answer of questions
-     *
      * @param first
      * @param second - input numbers.
      * @return biggest num
