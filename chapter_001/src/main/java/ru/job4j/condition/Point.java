@@ -30,6 +30,6 @@ public class Point {
         int x2 = b.x;
         int y2 = b.y;
 
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.sqrt(Math.pow(y2 - y1, 2)));
+        return Math.sqrt(Math.pow(x2 - x1, 2) + (Math.pow(y2 - y1, 2)));
     }
 }
