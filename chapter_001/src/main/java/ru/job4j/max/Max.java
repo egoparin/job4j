@@ -11,11 +11,22 @@ package ru.job4j.max;
 public class Max {
     /**
      * Max num
+     *
      * @param first
      * @param second - input numbers.
      * @return biggest num
      */
     public int maxNumber(int first, int second) {
-        return (first > second) ? first : (first == second) ? 0 : second;
+        return (first > second) ? first : second;
+    }
+
+    /**
+     * Max num
+     */
+
+    public int maxNumber(int first, int second, int third) {
+        int temp = this.maxNumber(first, second);
+        temp = this.maxNumber(temp, third);
+        return temp;
     }
 }

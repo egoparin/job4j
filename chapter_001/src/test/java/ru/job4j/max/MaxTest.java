@@ -18,7 +18,6 @@ public class MaxTest {
 
     /**
      * Test
-     *
      */
     @Test
     public void when1and2Then2() {
@@ -32,6 +31,11 @@ public class MaxTest {
 
     @Test
     public void when2and2Then0() {
-        assertThat(max.maxNumber(2, 2), is(0));
+        assertThat(max.maxNumber(2, 2), is(2));
+    }
+
+    @Test
+    public void when3and2and5Then5() {
+        assertThat(max.maxNumber(3, 2, 5), is(5));
     }
 }
