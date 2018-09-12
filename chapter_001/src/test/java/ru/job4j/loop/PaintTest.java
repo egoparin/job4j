@@ -21,13 +21,13 @@ public class PaintTest {
     public void whenPyramid4() {
         String result = paint.pyramid(4);
         System.out.println(result);
-        assertThat(result, is("   ^   \n"
+        assertThat(result, is("   ^   \r\n"
                 +
-                "  ^^^  \n"
+                "  ^^^  \r\n"
                 +
-                " ^^^^^ \n"
+                " ^^^^^ \r\n"
                 +
-                "^^^^^^^\n"));
+                "^^^^^^^\r\n"));
     }
 
     @Test
@@ -35,13 +35,13 @@ public class PaintTest {
         String result = paint.leftTrl(4);
         System.out.println(result);
         assertThat(result,
-                is("   ^\n"
+                is("   ^\r\n"
                         +
-                        "  ^^\n"
+                        "  ^^\r\n"
                         +
-                        " ^^^\n"
+                        " ^^^\r\n"
                         +
-                        "^^^^\n"));
+                        "^^^^\r\n"));
 
     }
 
@@ -50,12 +50,12 @@ public class PaintTest {
         String result = paint.rightTrl(4);
         System.out.println(result);
         assertThat(result,
-                is("^   \n"
+                is("^   \r\n"
                         +
-                        "^^  \n"
+                        "^^  \r\n"
                         +
-                        "^^^ \n"
+                        "^^^ \r\n"
                         +
-                        "^^^^\n"));
+                        "^^^^\r\n"));
     }
 }
