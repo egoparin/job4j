@@ -1,4 +1,4 @@
-package ru.job4j.collections_pro;
+package ru.job4j.collections_pro.itetator;
 
 /**
  * @author Egor Oparin (mailto:egoparin@gmail.com)

@@ -1,7 +1,7 @@
-package ru.job4j.collerctions_pro;
+package ru.job4j.collerctions_pro.iterator;
 
 import org.junit.Test;
-import ru.job4j.collections_pro.IteratorMultDimenArray;
+import ru.job4j.collections_pro.itetator.IteratorMultDimenArray;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
