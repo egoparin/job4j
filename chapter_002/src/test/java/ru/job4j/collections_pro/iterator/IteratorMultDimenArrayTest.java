@@ -1,4 +1,4 @@
-package ru.job4j.collerctions_pro.iterator;
+package ru.job4j.collections_pro.iterator;
 
 import org.junit.Test;
 import ru.job4j.collections_pro.itetator.IteratorMultDimenArray;
