@@ -13,8 +13,8 @@ package ru.job4j.collections_pro.generics;
  Объект должен принимать количество ячеек. Структура не должна быть динамической. Если идет переполнение надо выкинуть ошибку.
  */
 
-import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -40,37 +40,45 @@ public class SimpleArray<T> implements Iterable<T> {
         this.array =(T[]) new Object[size];
     }
 
-     void add(T model) throws IndexOutOfBoundsException {
+     public void add(T model) throws IndexOutOfBoundsException {
         if(iterator().hasNext()){
             this.array[indexPosition++] = model;
         }
     }
 
-    void set(int index, T model) throws IndexOutOfBoundsException{
+    public void set(int index, T model) throws IndexOutOfBoundsException{
         this.array[index] = model;
     }
 
-    void delete(int index) throws IndexOutOfBoundsException{
+    public void delete(int index) throws IndexOutOfBoundsException{
         array[index] = null;
     }
 
-    T get(int index) throws IndexOutOfBoundsException{
+    public T get(int index) throws IndexOutOfBoundsException{
         return array[index];
     }
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            @Override
-            public boolean hasNext() {
-                return size > indexPosition;
-            }
+        return new ArrayIterator();
+    }
 
-            @Override
-            public T next() {
-                return array[indexPosition++];
+    private class ArrayIterator implements Iterator<T> {
+        int current = 0;
+        public boolean hasNext() {
+            if (current < SimpleArray.this.array.length) {
+                return true;
+            } else {
+                return false;
             }
-        };
+        }
+
+        public T next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            return array[current++];
+        }
     }
 
 }
