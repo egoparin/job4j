@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 public class EvenIteratorTest {
 
-    private int array[][] = {{1, 2, 10}, {3, 4, 5}, {7, 9, 6, 4}, {8}};
+    private int array[][] = {{1, 2, 10}, {3, 8, 5}, {7, 9, 6, 4}, {8}};
     private EvenIterator it = new EvenIterator(array);
 
     /**
@@ -24,8 +24,9 @@ public class EvenIteratorTest {
     @Test
     public void whenGetNextCallNextEven() {
         it.next();
+        it.next();
         int result = (Integer) it.next();
-        assertThat(result, is(10));
+        assertThat(result, is(8));
     }
 
     /**
@@ -40,6 +41,5 @@ public class EvenIteratorTest {
 
         result = it.hasNext();
         assertThat(result, is(true));
-
     }
 }

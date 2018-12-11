@@ -13,8 +13,8 @@ public class EvenIterator implements Iterator {
 
     private int indexRow = 0;
     private int indexColumn = 0;
-    private int nextIndexRow;
-    private int nextIndexColumn;
+    private int nextIndexRow = 0;
+    private int nextIndexColumn = 0;
     private int[][] values;
 
     public EvenIterator(final int[][] values) {
@@ -23,9 +23,15 @@ public class EvenIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
+        if (indexColumn+1 >= values[indexRow].length){
+            indexRow++;
+            indexColumn = 0;
+        }
         for (int row = indexRow; row <= values.length; row++) {
-            for (int column = indexColumn + 1; column < values[row].length; column++) {
+            nextIndexRow = row;
+            for (int column = indexColumn+1; column < values[row].length; column++) {
                 if (values[row][column] % 2 == 0) {
+                    nextIndexColumn = column;
                     return true;
                 }
             }
@@ -35,21 +41,9 @@ public class EvenIterator implements Iterator {
 
     @Override
     public Object next() throws NoSuchElementException {
-
-        rowLoop:
-        for (int row = indexRow; row <= values.length; row++) {
-            for (int column = indexColumn + 1; column < values[row].length; column++) {
-                if (values[row][column] % 2 == 0) {
-                    nextIndexRow = row;
-                    nextIndexColumn = column;
-                    break rowLoop;
-                }
-            }
-        }
         if (hasNext()) {
-            indexRow = nextIndexRow;
-            indexColumn = nextIndexColumn;
+            return values[indexRow =+ nextIndexRow][indexColumn =+ nextIndexColumn];
         }
-        return values[indexRow][indexColumn];
+        throw new NoSuchElementException();
     }
 }
