@@ -1,4 +1,4 @@
-package ru.job4j.collections_pro.itetator;
+package ru.job4j.collectionsPro.itetator;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -10,10 +10,10 @@ public class ConverterIterators {
 
             private Iterator<Integer> currentIterator;
 
-            private Iterator<Integer> findNext(){
-                while (iterator.hasNext()){
+            private Iterator<Integer> findNext() {
+                while (iterator.hasNext()) {
                     currentIterator = iterator.next();
-                    if (currentIterator.hasNext()){
+                    if (currentIterator.hasNext()) {
                         return currentIterator;
                     }
                 }
@@ -22,15 +22,15 @@ public class ConverterIterators {
 
             @Override
             public boolean hasNext() {
-                if (currentIterator == null || !currentIterator.hasNext()){
+                if (currentIterator == null || !currentIterator.hasNext()) {
                     currentIterator = findNext();
                 }
                 return (currentIterator != null && currentIterator.hasNext());
             }
 
             @Override
-            public Integer next() throws NoSuchElementException{
-                if (currentIterator == null || !currentIterator.hasNext()){
+            public Integer next() throws NoSuchElementException {
+                if (currentIterator == null || !currentIterator.hasNext()) {
                     currentIterator = findNext();
                 }
                 return currentIterator.next();

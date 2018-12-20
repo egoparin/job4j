@@ -1,4 +1,4 @@
-package ru.job4j.collections_pro.generics;
+package ru.job4j.collectionsPro.generics;
 
 /*
  В этом задании необходимо сделать универсальную обертку над массивом.
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- *
  * @author Egor Oparin (mailto:egoparin@gmail.com)
  * @version $Id$
  * @since 02.12.2018
@@ -29,32 +28,32 @@ public class SimpleArray<T> implements Iterable<T> {
     private int indexPosition = 0;
 
     @SuppressWarnings("unchecked")
-    public SimpleArray(){
+    public SimpleArray() {
         this.size = 5;
         this.array = (T[]) new Object[size];
     }
 
     @SuppressWarnings("unchecked")
-    public SimpleArray(int size){
+    public SimpleArray(int size) {
         this.size = size;
-        this.array =(T[]) new Object[size];
+        this.array = (T[]) new Object[size];
     }
 
-     public void add(T model) throws IndexOutOfBoundsException {
-        if(iterator().hasNext()){
+    public void add(T model) throws IndexOutOfBoundsException {
+        if (iterator().hasNext()) {
             this.array[indexPosition++] = model;
         }
     }
 
-    public void set(int index, T model) throws IndexOutOfBoundsException{
+    public void set(int index, T model) throws IndexOutOfBoundsException {
         this.array[index] = model;
     }
 
-    public void delete(int index) throws IndexOutOfBoundsException{
+    public void delete(int index) throws IndexOutOfBoundsException {
         array[index] = null;
     }
 
-    public T get(int index) throws IndexOutOfBoundsException{
+    public T get(int index) throws IndexOutOfBoundsException {
         return array[index];
     }
 
@@ -65,6 +64,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     private class ArrayIterator implements Iterator<T> {
         int current = 0;
+
         public boolean hasNext() {
             if (current < SimpleArray.this.array.length) {
                 return true;

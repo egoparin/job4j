@@ -1,14 +1,12 @@
-package ru.job4j.collections_pro.generics;
+package ru.job4j.collectionsPro.generics;
 
 import org.junit.Test;
-import ru.job4j.collections_pro.itetator.ConverterIterators;
 
-import java.util.Arrays;
 import java.util.Iterator;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 /**
  * Test.
@@ -43,7 +41,7 @@ public class SimpleArrayTest {
         simpleArray.add("5");
 
         StringBuilder result = new StringBuilder();
-        for(int i = 0; i <simpleArray.size; i++){
+        for (int i = 0; i < simpleArray.size; i++) {
             result.append(simpleArray.get(i));
         }
         assertThat(result.toString(), is("01234"));
@@ -70,7 +68,7 @@ public class SimpleArrayTest {
      */
     @Test
     public void whenSetThenSetToArray() {
-        simpleArray.set(4,"Last");
+        simpleArray.set(4, "Last");
         String result = simpleArray.get(4);
         assertThat(result, is("Last"));
     }
@@ -80,7 +78,7 @@ public class SimpleArrayTest {
      */
     @Test
     public void whenDeleteThenDeleteItemEqualNull() {
-        simpleArray.set(3,"Middle");
+        simpleArray.set(3, "Middle");
         simpleArray.delete(3);
         String result = simpleArray.get(3);
         assertNull(result);

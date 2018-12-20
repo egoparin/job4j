@@ -1,4 +1,6 @@
-package ru.job4j.collections_pro.itetator;
+package ru.job4j.collectionsPro.itetator;
+
+import java.util.Iterator;
 
 /**
  * @author Egor Oparin (mailto:egoparin@gmail.com)
@@ -6,7 +8,7 @@ package ru.job4j.collections_pro.itetator;
  * @since 23.10.2018
  */
 
-public class IteratorMultDimenArray {
+public class IteratorMultDimenArray implements Iterator<Integer> {
 
     private int indexRow = 0;
     private int indexColumn = 0;
@@ -21,7 +23,7 @@ public class IteratorMultDimenArray {
         return !(values.length - 1 == indexRow && values[values.length - 1].length == indexColumn);
     }
 
-    public Object next() {
+    public Integer next() {
         if (values[indexRow].length <= indexColumn) {
             indexRow++;
             indexColumn = 0;
