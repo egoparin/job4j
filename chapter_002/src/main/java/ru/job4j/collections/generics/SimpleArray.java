@@ -1,4 +1,4 @@
-package ru.job4j.collectionsPro.generics;
+package ru.job4j.collections.generics;
 
 /*
  В этом задании необходимо сделать универсальную обертку над массивом.
@@ -26,6 +26,7 @@ public class SimpleArray<T> implements Iterable<T> {
     private final T[] array;
     public final int size;
     private int indexPosition = 0;
+    private int itteratorIndex = 0;
 
     @SuppressWarnings("unchecked")
     public SimpleArray() {
@@ -39,21 +40,21 @@ public class SimpleArray<T> implements Iterable<T> {
         this.array = (T[]) new Object[size];
     }
 
-    public void add(T model) throws IndexOutOfBoundsException {
-        if (iterator().hasNext()) {
+    public void add(T model) {
+        if (indexPosition < array.length) {
             this.array[indexPosition++] = model;
         }
     }
 
-    public void set(int index, T model) throws IndexOutOfBoundsException {
+    public void set(int index, T model) {
         this.array[index] = model;
     }
 
-    public void delete(int index) throws IndexOutOfBoundsException {
+    public void delete(int index) {
         array[index] = null;
     }
 
-    public T get(int index) throws IndexOutOfBoundsException {
+    public T get(int index) {
         return array[index];
     }
 
@@ -64,18 +65,13 @@ public class SimpleArray<T> implements Iterable<T> {
 
     private class ArrayIterator implements Iterator<T> {
         int current = 0;
-
         public boolean hasNext() {
-            if (current < SimpleArray.this.array.length) {
-                return true;
-            } else {
-                return false;
-            }
+           return current < indexPosition;
         }
 
         public T next() {
             if (!hasNext()) {
-                throw new NoSuchElementException();
+                return null;
             }
             return array[current++];
         }

@@ -1,4 +1,4 @@
-package ru.job4j.collectionsPro.generics;
+package ru.job4j.collections.generics;
 
 import org.junit.Test;
 
@@ -20,12 +20,14 @@ public class SimpleArrayTest {
     SimpleArray<String> simpleArray = new SimpleArray<String>(5);
 
     @Test
-    public void TestIterator() {
+    public void testIterator() {
         SimpleArray<Integer> simpleArray = new SimpleArray<>();
         simpleArray.add(1);
         simpleArray.add(2);
         Iterator<Integer> iterator = simpleArray.iterator();
-        assertThat(iterator.next(), is(1));
+        iterator.next();
+        assertThat(iterator.next(), is(2));
+        assertNull(iterator.next());
     }
 
     /**

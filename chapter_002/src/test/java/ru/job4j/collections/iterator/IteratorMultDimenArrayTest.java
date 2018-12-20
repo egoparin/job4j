@@ -1,7 +1,7 @@
-package ru.job4j.collectionsPro.iterator;
+package ru.job4j.collections.iterator;
 
 import org.junit.Test;
-import ru.job4j.collectionsPro.itetator.IteratorMultDimenArray;
+import ru.job4j.collections.itetator.IteratorMultDimenArray;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
  */
 public class IteratorMultDimenArrayTest {
 
-    private int array[][] = {{1, 2}, {3, 4, 5}, {7, 9, 6, 4}, {8}};
+    private int[][] array = {{1, 2}, {3, 4, 5}, {7, 9, 6, 4}, {8}};
     private IteratorMultDimenArray it = new IteratorMultDimenArray(array);
 
     /**

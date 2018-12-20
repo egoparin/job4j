@@ -1,7 +1,7 @@
-package ru.job4j.collectionsPro.iterator;
+package ru.job4j.collections.iterator;
 
 import org.junit.Test;
-import ru.job4j.collectionsPro.itetator.ConverterIterators;
+import ru.job4j.collections.itetator.ConverterIterators;
 
 import java.util.Arrays;
 import java.util.Iterator;

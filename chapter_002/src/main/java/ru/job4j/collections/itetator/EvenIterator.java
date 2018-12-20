@@ -1,4 +1,4 @@
-package ru.job4j.collectionsPro.itetator;
+package ru.job4j.collections.itetator;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -16,6 +16,8 @@ public class EvenIterator implements Iterator {
     private int nextIndexRow = 0;
     private int nextIndexColumn = 0;
     private int[][] values;
+    private int countNext = 0;
+    private int countHasNext = 0;
 
     public EvenIterator(final int[][] values) {
         this.values = values;
@@ -23,15 +25,34 @@ public class EvenIterator implements Iterator {
 
     @Override
     public boolean hasNext() {
-        if (indexColumn + 1 >= values[indexRow].length) {
+        countHasNext++;
+        if (indexRow >= values.length) {
+            return false;
+        }
+        if (indexColumn + 1 >= values[indexRow].length) {  //проверка на след.элемнет во внутр. массиве
             indexRow++;
             indexColumn = 0;
         }
         for (int row = indexRow; row <= values.length; row++) {
-            nextIndexRow = row;
-            for (int column = indexColumn + 1; column < values[row].length; column++) {
+            if (row >= values.length )
+            {return false;}
+            if (indexColumn + 1 >= values[row].length || row != indexRow) {      //проверка в случае использования hasNext на крайнем внутр. эл-те
+                indexColumn = 0;
+            }
+            if (countHasNext == countNext) {
+                nextIndexRow = row;
+            } else {
+                countHasNext = 0;
+                countHasNext = 0;
+            }
+            for (int column = (indexColumn == 0 && row == 0 || values[row].length == 1) ? indexColumn : ++indexColumn; column < values[row].length; column++) {
                 if (values[row][column] % 2 == 0) {
-                    nextIndexColumn = column;
+                    if (countHasNext == countNext) {
+                        nextIndexColumn = column;
+                    } else {
+                        countHasNext = 0;
+                        countNext = 0;
+                    }
                     return true;
                 }
             }
@@ -42,7 +63,12 @@ public class EvenIterator implements Iterator {
     @Override
     public Object next() throws NoSuchElementException {
         if (hasNext()) {
-            return values[indexRow = +nextIndexRow][indexColumn = +nextIndexColumn];
+            countNext++;
+            int a1 = indexRow;
+            int a2 = indexColumn;
+            indexRow = nextIndexRow;
+            indexColumn = nextIndexColumn;
+            return values[nextIndexRow][nextIndexColumn];
         }
         throw new NoSuchElementException();
     }
