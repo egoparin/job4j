@@ -34,8 +34,9 @@ public class EvenIterator implements Iterator {
             indexColumn = 0;
         }
         for (int row = indexRow; row <= values.length; row++) {
-            if (row >= values.length )
-            {return false;}
+            if (row >= values.length) {
+                return false;
+            }
             if (indexColumn + 1 >= values[row].length || row != indexRow) {      //проверка в случае использования hasNext на крайнем внутр. эл-те
                 indexColumn = 0;
             }
@@ -64,8 +65,6 @@ public class EvenIterator implements Iterator {
     public Object next() throws NoSuchElementException {
         if (hasNext()) {
             countNext++;
-            int a1 = indexRow;
-            int a2 = indexColumn;
             indexRow = nextIndexRow;
             indexColumn = nextIndexColumn;
             return values[nextIndexRow][nextIndexColumn];
