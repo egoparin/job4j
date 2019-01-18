@@ -1,4 +1,9 @@
 package ru.job4j.collections.generics.store;
 
-public class RoleStore {
+/**
+ * @author Oparin Egor (egoparin@gmail.ru)
+ * @version $Id$
+ * @since 18.01.2019
+ */
+public class RoleStore<T extends Base> extends AbstractStore {
 }
