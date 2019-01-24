@@ -5,5 +5,5 @@ package ru.job4j.collections.generics.store;
  * @version $Id$
  * @since 18.01.2019
  */
-public class RoleStore<T extends Base> extends AbstractStore {
+public class RoleStore extends AbstractStore<Role> {
 }
