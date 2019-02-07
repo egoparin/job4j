@@ -18,7 +18,7 @@ public class CustomArrayList<E> implements SimpleList<E> {
         values = (E[]) new Object[capacity];
     }
 
-    public void ensureCapacityInternal(int size) {
+    private void ensureCapacityInternal(int size) {
         try {
             if (this.size + 1 >= size) {
                 E[] temp = values;
