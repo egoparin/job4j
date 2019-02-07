@@ -17,17 +17,17 @@ public class ArrayListIterator<E> implements Iterator<E> {
 
     @Override
     public boolean hasNext() {
+        if (expectedModCount != customArrayList.getModCounter()) {
+            throw new ConcurrentModificationException();
+        }
         return index < values.length;
     }
 
     @Override
     public E next() {
-        if (hasNext()) {
-            if (expectedModCount == customArrayList.getModCounter()) {
-                return values[index++];
-            }
-            throw new ConcurrentModificationException();
+        if (!hasNext()) {
+            throw new NoSuchElementException();
         }
-        throw new NoSuchElementException();
+        return values[index++];
     }
 }
