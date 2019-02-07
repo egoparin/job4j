@@ -26,10 +26,13 @@ public class SimpleArrayList<E> {
      * Method delete first element from collection.
      */
     public E delete() {
-        Node<E> result = this.first;
-        this.first = result.next;
-        size--;
-        return result.data;
+        if (this.size != 0) {
+            Node<E> result = this.first;
+            this.first = result.next;
+            size--;
+            return result.data;
+        }
+        return null;
     }
 
     /**
