@@ -4,6 +4,12 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+
+/**
+ * @author Egor Oparin (mailto:egoparin@gmail.com)
+ * @version $Id$
+ * @since 06.02.2019
+ */
 public class CustomLinkedList<E> implements SimpleLinkedList<E> {
     private Node<E> firstE;
     private Node<E> lastE;
@@ -63,30 +69,35 @@ public class CustomLinkedList<E> implements SimpleLinkedList<E> {
         return current.value;
     }
 
-    int getModCounter() {
+    private int getModCounter() {
         return modCounter;
     }
 
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            int counter = 0;
             private int expectedModCounter = getModCounter();
+            private Node<E> cursorNode = firstE;
 
             @Override
             public boolean hasNext() {
                 if (expectedModCounter != getModCounter()) {
                     throw new ConcurrentModificationException();
                 }
-                return counter < size;
+                return cursorNode != null;
             }
 
             @Override
             public E next() {
+                Node<E> t = cursorNode;
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                return getElementByIndex(counter++);
+                if (cursorNode == null) {
+                    throw new NoSuchElementException();
+                }
+                cursorNode = cursorNode.next;
+                return t.value;
             }
         };
     }
