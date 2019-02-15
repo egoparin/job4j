@@ -47,6 +47,23 @@ public class CustomLinkedListTest {
         assertThat(dif, is(new Integer[]{6, 5, 4}));
     }
 
+    @Test
+    public void whenRemoveLastReturnDecrementCollection() {
+        customLinkedList.lastAdd(7);
+        customLinkedList.lastAdd(8);
+        customLinkedList.lastAdd(9);
+
+        customLinkedList.removeLast();
+
+        Integer[] dif = new Integer[2];
+        int count = 0;
+
+        for (Integer item : customLinkedList) {
+            dif[count++] = item;
+        }
+        assertThat(dif, is(new Integer[]{7, 8}));
+    }
+
     /**
      * First print 1, and throw Exception.
      */

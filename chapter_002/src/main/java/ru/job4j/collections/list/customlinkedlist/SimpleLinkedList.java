@@ -25,4 +25,9 @@ public interface SimpleLinkedList<E> extends Iterable<E> {
      * @return
      */
     E getElementByIndex(int counter);
+
+    /**
+     * Delete last element
+     */
+    public E removeLast();
 }

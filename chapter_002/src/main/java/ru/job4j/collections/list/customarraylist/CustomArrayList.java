@@ -55,7 +55,7 @@ public class CustomArrayList<E> implements SimpleList<E> {
 
     @Override
     public void update(int index, E e) {
-        if (index < 0 && index < size){
+        if (index < 0 && index < size) {
             throw new ArrayIndexOutOfBoundsException();
         }
         values[index] = e;

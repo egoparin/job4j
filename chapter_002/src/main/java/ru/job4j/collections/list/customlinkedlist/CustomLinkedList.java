@@ -58,6 +58,31 @@ public class CustomLinkedList<E> implements SimpleLinkedList<E> {
     }
 
     @Override
+    public E removeLast() {
+        final Node<E> l = lastE;
+        if (l == null) {
+            throw new NoSuchElementException();
+        }
+        return unlinkLast(l);
+    }
+
+    private E unlinkLast(Node<E> l) {
+        final E element = l.value;
+        final Node<E> prev = l.prev;
+        l.value = null;
+        l.prev = null;
+        lastE = prev;
+        if (prev == null) {
+            firstE = null;
+        } else {
+            prev.next = null;
+        }
+        size--;
+        modCounter++;
+        return element;
+    }
+
+    @Override
     public E getElementByIndex(int counter) {
         if (counter < 0 && counter < size) {
             throw new IndexOutOfBoundsException();
@@ -67,6 +92,13 @@ public class CustomLinkedList<E> implements SimpleLinkedList<E> {
             current = current.next;
         }
         return current.value;
+    }
+
+    /**
+     * @return Last element.
+     */
+    public E getLastElement() {
+        return this.lastE.value;
     }
 
     private int getModCounter() {
