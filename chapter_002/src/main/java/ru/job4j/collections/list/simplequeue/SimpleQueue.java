@@ -18,11 +18,14 @@ public class SimpleQueue<T> {
      *
      * @return element value.
      */
-    private T pop() {
-        T value = list.getLastElement();
-        list.removeLast();
+    public T pop() {
+        if (helpFulStack.getSize() == 0) {
+            while (currentStack.getSize() != 0) {
+                helpFulStack.push(currentStack.pop());
+            }
+        }
         size--;
-        return value;
+        return helpFulStack.pop();
     }
 
     /**
@@ -30,9 +33,9 @@ public class SimpleQueue<T> {
      *
      * @param value
      */
-    private void push(T value) {
-
+    public void push(T value) {
         size++;
+        this.currentStack.push(value);
     }
 
 
