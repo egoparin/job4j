@@ -10,7 +10,7 @@ public class CustomArrayList<E> implements SimpleList<E> {
     private static int modCounter = 0;
     private int size;
 
-    CustomArrayList() {
+    public CustomArrayList() {
         values = (E[]) new Object[10];
     }
 
