@@ -20,11 +20,21 @@ public class User {
         this.birthday = birthday;
     }
 
+    //@Override
+    //public int hashCode() {
+    //    int result = name != null ? name.hashCode() : 0;
+    //    result = 31 * result + 1 + children;
+    //    return result;
+    //}
+
+
     @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + 1 + children;
-        return result;
+    public boolean equals(Object obj) {
+        if (!(obj instanceof User) || obj == null) {
+            return false;
+        }
+        User user = (User) obj;
+        return this.name.equals(user.name) && this.birthday.equals(user.birthday) && this.children == user.children;
     }
 
     /**

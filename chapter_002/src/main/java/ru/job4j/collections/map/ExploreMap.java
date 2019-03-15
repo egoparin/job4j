@@ -20,7 +20,7 @@ public class ExploreMap {
     private User user2 = new User("Alex", 1, LocalDate.of(1990, Month.AUGUST, 1));
     private User user3 = new User("Jim", 0, LocalDate.of(1992, Month.JANUARY, 23));
 
-    static Map<User, String> map = new HashMap<>();
+    private static Map<User, String> map = new HashMap<>();
 
     private void testMap() {
         System.out.println(user1.equals(user2));
@@ -44,9 +44,9 @@ public class ExploreMap {
 
     /**
      * Modified hashCode;
-     * {ru.job4j.collections.map.user.User@3c69983=first, ru.job4j.collections.map.user.User@3c69983=second}
+     * {ru.job4j.collections.map.user.User@6bc7c054=second, ru.job4j.collections.map.user.User@75b84c92=first}
      */
-    /* Метод put сравнивает сначала объект по equals, затем если они равны то по equals.
+    /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
      * Соответсвенно, т.к контракт equals и hashCode не выполняется, то объекты не равны, но в этот раз лежать они будут
      * в одной корзине, так как возникает коллизия из-за одинакового hashCode, в результате first будет иметь ссылку next на объект second.
      * [1*]     [2]     [3*]     [4]     [5]     [6]     [7]     [8]     [9]     [10]    [11]    [12]    [13]    [14]    [15]    [16]
@@ -55,6 +55,18 @@ public class ExploreMap {
      *   |
      *  second
      */
+
+    /**
+     * Modified equals;
+     * {ru.job4j.collections.map.user.User@6bc7c054=second, ru.job4j.collections.map.user.User@75b84c92=first}
+     */
+    /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
+     * Сейчас, т.к hashCode не переопределен, то индекс для коризны вычислится другой, equals не повлияет.
+     * [1*]     [2]     [3*]     [4]     [5]     [6]     [7]     [8]     [9]     [10]    [11]    [12]    [13]    [14]    [15]    [16]
+     *   |       |        |        |       |       |       |       |       |        |       |       |       |       |       |       |
+     *  first  second
+     */
+
     public static void main(String[] args) {
         ExploreMap exploreMap = new ExploreMap();
         exploreMap.testMap();
