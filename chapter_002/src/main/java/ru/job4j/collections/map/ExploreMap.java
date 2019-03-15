@@ -67,6 +67,18 @@ public class ExploreMap {
      *  first  second
      */
 
+    /**
+     * Modified equals and hashCode;
+     * {ru.job4j.collections.map.user.User@3c69984=second}
+     */
+    /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
+     * При выполнии побоих условий сейчас, с учетом что переопределен hashCode, попадут они в одну корзину,
+     * затем сравниться по перепределенному equals и перезапишет объект.
+     * [1*]     [2]     [3*]     [4]     [5]     [6]     [7]     [8]     [9]     [10]    [11]    [12]    [13]    [14]    [15]    [16]
+     *   |       |        |        |       |       |       |       |       |        |       |       |       |       |       |       |
+     *  second
+     */
+
     public static void main(String[] args) {
         ExploreMap exploreMap = new ExploreMap();
         exploreMap.testMap();
