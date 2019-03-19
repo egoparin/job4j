@@ -1,7 +1,5 @@
 package ru.job4j.collections.map;
 
-import ru.job4j.collections.map.user.User;
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.HashMap;
@@ -31,7 +29,7 @@ public class ExploreMap {
 
     /**
      * Don't modified equals and hashCode;
-     * {ru.job4j.collections.map.user.User@6bc7c054=second, ru.job4j.collections.map.user.User@75b84c92=first}
+     * {ru.job4j.collections.map.User@6bc7c054=second, ru.job4j.collections.map.User@75b84c92=first}
      */
     /*
      * Для текущей HaspMap в качестве ключа используется класс User, а в качестве значения просто строка.
@@ -44,11 +42,13 @@ public class ExploreMap {
 
     /**
      * Modified hashCode;
-     * {ru.job4j.collections.map.user.User@6bc7c054=second, ru.job4j.collections.map.user.User@75b84c92=first}
+     * {ru.job4j.collections.map.User@6bc7c054=second, ru.job4j.collections.map.User@75b84c92=first}
      */
     /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
      * Соответсвенно, т.к контракт equals и hashCode не выполняется, то объекты не равны, но в этот раз лежать они будут
      * в одной корзине, так как возникает коллизия из-за одинакового hashCode, в результате first будет иметь ссылку next на объект second.
+     * Для успешного поиска объекта в хэш-таблице помимо сравнения хэш-значений ключа используется также определение логического равенства ключа с искомым объектом.
+     * Т. е. без переопределения метода equals никак не получится обойтись.
      * [1*]     [2]     [3*]     [4]     [5]     [6]     [7]     [8]     [9]     [10]    [11]    [12]    [13]    [14]    [15]    [16]
      *   |       |        |        |       |       |       |       |       |        |       |       |       |       |       |       |
      *  first
@@ -58,10 +58,11 @@ public class ExploreMap {
 
     /**
      * Modified equals;
-     * {ru.job4j.collections.map.user.User@6bc7c054=second, ru.job4j.collections.map.user.User@75b84c92=first}
+     * {ru.job4j.collections.map.User@6bc7c054=second, ru.job4j.collections.map.User@75b84c92=first}
      */
     /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
-     * Сейчас, т.к hashCode не переопределен, то индекс для коризны вычислится другой, equals не повлияет.
+     * Очевидно, что помещаемый и искомый объект — это два разных объекта, хотя они и являются логически равными.
+     * Но, т.к. они имеют разное хэш-значение, потому что мы нарушили контракт, можно сказать, что мы потеряли свой объект где-то в недрах хэш-таблицы.
      * [1*]     [2]     [3*]     [4]     [5]     [6]     [7]     [8]     [9]     [10]    [11]    [12]    [13]    [14]    [15]    [16]
      *   |       |        |        |       |       |       |       |       |        |       |       |       |       |       |       |
      *  first  second
@@ -69,7 +70,7 @@ public class ExploreMap {
 
     /**
      * Modified equals and hashCode;
-     * {ru.job4j.collections.map.user.User@3c69984=second}
+     * {ru.job4j.collections.map.User@3c69984=second}
      */
     /* Метод put сравнивает сначала объект по hashCode, затем если они равны то по equals.
      * При выполнии побоих условий сейчас, с учетом что переопределен hashCode, попадут они в одну корзину,

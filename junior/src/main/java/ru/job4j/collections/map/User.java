@@ -1,4 +1,4 @@
-package ru.job4j.collections.map.user;
+package ru.job4j.collections.map;
 
 import java.time.LocalDate;
 
