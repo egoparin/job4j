@@ -38,7 +38,7 @@ public class CustomTree<E extends Comparable<E>> implements SimpleTree<E> {
      */
     @Override
     public boolean add(E parent, E child) {
-        if (child == null && parent == null) {
+        if (child == null || parent == null) {
             return false;
         }
         Node<E> parentNode;
@@ -46,11 +46,15 @@ public class CustomTree<E extends Comparable<E>> implements SimpleTree<E> {
 
         if (this.root == null) {
             parentNode = new Node<E>(parent);
-            parentNode.add(childNode);
             this.root = parentNode;
-            return true;
+        } else {
+            parentNode = this.findBy(parent).get();
         }
-        parentNode = this.findBy(parent).get();
+        for (Node<E> ch : parentNode.leaves()) {
+            if (ch.eqValue(child)){
+                return false;
+            }
+        }
         parentNode.add(childNode);
         return true;
     }

@@ -57,30 +57,41 @@ public class CustomTreeTest {
     }
 
     @Test
-    public void WhenIsBinaryThenTrue(){
+    public void WhenIsBinaryThenTrue() {
         CustomTree<Integer> customTreeTest = new CustomTree<>();
-        customTreeTest.add(0,1);
-        customTreeTest.add(0,2);
-        customTreeTest.add(1,3);
-        customTreeTest.add(1,4);
-        customTreeTest.add(2,5);
-        customTreeTest.add(2,6);
-        customTreeTest.add(3,7);
+        customTreeTest.add(0, 1);
+        customTreeTest.add(0, 2);
+        customTreeTest.add(1, 3);
+        customTreeTest.add(1, 4);
+        customTreeTest.add(2, 5);
+        customTreeTest.add(2, 6);
+        customTreeTest.add(3, 7);
 
         assertTrue(customTreeTest.isBinaryTree());
 
     }
 
     @Test
-    public void WhenIsBinaryThenFalse(){
+    public void WhenIsBinaryThenFalse() {
         CustomTree<Integer> customTreeTest = new CustomTree<>();
-        customTreeTest.add(0,1);
-        customTreeTest.add(0,2);
-        customTreeTest.add(1,3);
-        customTreeTest.add(1,4);
-        customTreeTest.add(1,5);
-        customTreeTest.add(1,6);
+        customTreeTest.add(0, 1);
+        customTreeTest.add(0, 2);
+        customTreeTest.add(1, 3);
+        customTreeTest.add(1, 4);
+        customTreeTest.add(1, 5);
+        customTreeTest.add(1, 6);
 
         assertFalse(customTreeTest.isBinaryTree());
+    }
+
+    @Test
+    public void WhenDuplicateThenNoAdd() {
+        CustomTree<Integer> tree = new CustomTree<>();
+        tree.add(0, 1);
+        tree.add(0, 2);
+        tree.add(1, 3);
+        tree.add(1, 4);
+
+        assertFalse(tree.add(1, 4));
     }
 }
