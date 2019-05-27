@@ -46,17 +46,21 @@ public class CustomTree<E extends Comparable<E>> implements SimpleTree<E> {
 
         if (this.root == null) {
             parentNode = new Node<E>(parent);
-            this.root = parentNode;
-        } else {
-            parentNode = this.findBy(parent).get();
-        }
-        for (Node<E> ch : parentNode.leaves()) {
-            if (ch.eqValue(child)){
+            if (!parentNode.eqValue(child)) {
+                parentNode.add(childNode);
+                this.root = parentNode;
+            } else {
                 return false;
             }
+        } else {
+            parentNode = this.findBy(parent).get();
+            boolean checkChild = this.findBy(child).isPresent();
+            if (!checkChild && parentNode != null && !parentNode.eqValue(child)) {
+                parentNode.add(childNode);
+                return true;
+            }
         }
-        parentNode.add(childNode);
-        return true;
+        return false;
     }
 
     @Override
