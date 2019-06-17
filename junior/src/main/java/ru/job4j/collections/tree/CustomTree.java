@@ -1,10 +1,7 @@
 package ru.job4j.collections.tree;
 
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Optional;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author Egor Oparin (mailto:egoparin@gmail.com)
@@ -93,14 +90,14 @@ public class CustomTree<E extends Comparable<E>> implements SimpleTree<E> {
 
             @Override
             public boolean hasNext() {
-                return !(data.size() == 0 && returnNode == null);
+                return !(data.size() == 0);
             }
 
             @Override
             public E next() {
                 returnNode = data.poll();
-                if (!hasNext()) {
-                    return null;
+                if (!hasNext() && returnNode == null) {
+                   throw new NoSuchElementException();
                 }
                 for (Node<E> child : returnNode.leaves()) {
                     data.offer(child);
