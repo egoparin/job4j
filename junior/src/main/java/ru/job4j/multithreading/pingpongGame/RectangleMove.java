@@ -7,8 +7,6 @@ import javafx.scene.shape.Rectangle;
  */
 public class RectangleMove implements Runnable {
     private final Rectangle rect;
-    private double moveX = 1;
-    private double moveY = 0.5;
 
     RectangleMove(Rectangle rect) {
         this.rect = rect;
@@ -16,13 +14,15 @@ public class RectangleMove implements Runnable {
 
     @Override
     public void run() {
+        double moveX = 1;
+        double moveY = 0.5;
         while (!Thread.interrupted()){
             if (this.rect.getX() >= 300 || this.rect.getX() <= 0){
-                this.moveX *= -1;
+                moveX *= -1;
             }
 
             if (this.rect.getY() >= 300 || this.rect.getY() <= 0){
-                this.moveY *= -1;
+                moveY *= -1;
             }
 
             this.rect.setX(this.rect.getX() + moveX);
